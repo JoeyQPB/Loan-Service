@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://spring.io/guides/loanservice/user"
+           targetNamespace="http://spring.io/guides/loanservice/user"
+           elementFormDefault="qualified">
+
+    <!-- definitions for UserType -->
+    <xs:complexType name="UserType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="document" type="xs:string"/>
+            <xs:element name="dateOfBirth" type="xs:string"/>
+            <xs:element name="incomePerYear" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- definitions for userInfo -->
+    <xs:complexType name="UserInfo">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="document" type="xs:string"/>
+            <xs:element name="dateOfBirth" type="xs:string"/>
+            <xs:element name="incomePerYear" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- definitions for UserUpdateData -->
+    <xs:complexType name="UserUpdateData">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="incomePerYear" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- definitions for AddUser -->
+    <xs:element name="AddUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userData" type="tns:UserInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AddUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userData" type="tns:UserType"/>
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- definitions for GetUser -->
+    <xs:element name="GetUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userData" type="tns:UserType"/>
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- definitions for GetUser -->
+    <xs:element name="GetUserByDocumentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="document" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetUserByDocumentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userData" type="tns:UserType"/>
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- definitions for UpdateUser -->
+    <xs:element name="UpdateUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userData" type="tns:UserUpdateData"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userData" type="tns:UserType"/>
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- definitions for DeleteUser -->
+    <xs:element name="DeleteUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://spring.io/guides/loanservice/loan"
+           targetNamespace="http://spring.io/guides/loanservice/loan"
+           elementFormDefault="qualified">
+
+    <!-- definitions for LoanType -->
+    <xs:complexType name="LoanType">
+        <xs:sequence>
+            <xs:element name="value" type="xs:long"/>
+            <xs:element name="interest" type="xs:double"/>
+            <xs:element name="installments" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- definitions for LoanRequest -->
+    <xs:element name="LoanRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="document" type="xs:string"/>
+                <xs:element name="destination" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- definitions for LoanResponse -->
+    <xs:element name="LoanResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="loanData" type="tns:LoanType" maxOccurs="unbounded"/>
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
