@@ -2,6 +2,7 @@ package com.joey.loanservice.service;
 
 import com.joey.loanservice.model.UserModel;
 import com.joey.loanservice.repository.UserRepository;
+import com.joey.loanservice.strategy.userValidations.INewUserValidationsStrategy;
 import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,29 +15,32 @@ import io.spring.guides.loanservice.user.UserInfo;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private List<INewUserValidationsStrategy> newUserValidationsStrategyList;
+
     private final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     public UserType createUser (UserInfo data) {
-        UserModel userModel = new UserModel();
 
+        newUserValidationsStrategyList.forEach(validation -> validation.execute(data));
+
+        UserModel userModel = new UserModel();
         userModel.setDocument(data.getDocument());
         userModel.setName(data.getName());
         userModel.setIncomePerYear(data.getIncomePerYear());
 
         String dateString = data.getDateOfBirth();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        try {
-            LocalDate date =  LocalDate.parse(dateString, formatter);
-            userModel.setDateOfBirth(date);
-        } catch (DateTimeParseException e) {
-            System.out.println("invalid format: " + dateString);
-        }
+        LocalDate date =  LocalDate.parse(dateString, formatter);
+        userModel.setDateOfBirth(date);
 
         System.out.println(userModel);
         userModel = userRepository.save(userModel);
