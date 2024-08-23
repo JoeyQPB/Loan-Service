@@ -20,13 +20,15 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private List<INewUserValidationsStrategy> newUserValidationsStrategyList;
-
+    private final UserRepository userRepository;
+    private final List<INewUserValidationsStrategy> newUserValidationsStrategyList;
     private final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+
+    public UserService(UserRepository userRepository,
+                       List<INewUserValidationsStrategy> newUserValidationsStrategyList) {
+        this.userRepository = userRepository;
+        this.newUserValidationsStrategyList = newUserValidationsStrategyList;
+    }
 
     public UserType createUser (UserInfo data) {
 
@@ -73,6 +75,11 @@ public class UserService {
 
         LOGGER.info("[:] Found By Document: {}", document);
         return userType;
+    }
+
+    public UserModel getUserByModelDocument (String document) {
+        return userRepository.findByDocument(document)
+                .orElseThrow(() -> new EntityNotFoundException("Not found user for document: " + document));
     }
 
     public UserType updateUser (Long newIncome, Long id) {
