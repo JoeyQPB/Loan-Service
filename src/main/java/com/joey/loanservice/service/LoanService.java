@@ -44,7 +44,8 @@ public class LoanService {
         defaultRefusalValidationsList.forEach(defaultRef -> defaultRef.execute(incomePerYear, actualAge));
         System.out.println("TODAS AS VALIDAÇÕES FORAM FEITAS!");
 
-        loanResponse = this.loanProcessFactory.getStrategy(destination).processLoanRequest(user);
+        loanResponse = this.loanProcessFactory.getStrategy(destination).
+                processLoanRequest(user.getIncomePerYear(), actualAge);
 
         LOGGER.info("[:] Loan result by: {}", loanResponse.getStatus());
         return loanResponse;

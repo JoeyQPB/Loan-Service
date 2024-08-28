@@ -6,7 +6,8 @@ import io.spring.guides.loanservice.user.UserType;
 
 public interface ILoanProcessStrategy {
 
-    CustomLoanResponse processLoanRequest (UserModel user);
+    CustomLoanResponse processLoanRequest (Long incomePerYear, Integer age) throws Exception;
+
     String getDestination ();
 
 }

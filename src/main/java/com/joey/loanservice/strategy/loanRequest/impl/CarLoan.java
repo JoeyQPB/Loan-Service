@@ -1,22 +1,22 @@
 package com.joey.loanservice.strategy.loanRequest.impl;
 
 import com.joey.loanservice.dtos.CustomLoanResponse;
-import com.joey.loanservice.model.UserModel;
+import com.joey.loanservice.strategy.carLoan.factory.CarLoanOptionsFactory;
 import com.joey.loanservice.strategy.loanRequest.ILoanProcessStrategy;
-import com.joey.loanservice.strategy.loanRequest.utils.DefaultRefusal;
-import io.spring.guides.loanservice.user.UserType;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CarLoan implements ILoanProcessStrategy {
 
+    private final CarLoanOptionsFactory carLoanOptionsFactory;
+
+    public CarLoan(CarLoanOptionsFactory carLoanOptionsFactory) {
+        this.carLoanOptionsFactory = carLoanOptionsFactory;
+    }
+
     @Override
-    public CustomLoanResponse processLoanRequest(UserModel user) {
-        CustomLoanResponse customLoanResponse = new CustomLoanResponse();
-
-
-
-        return null;
+    public CustomLoanResponse processLoanRequest (Long incomePerYear, Integer age) throws Exception {
+        return carLoanOptionsFactory.getStrategy(incomePerYear).processLoanOptions(age);
     }
 
     @Override
