@@ -1,16 +1,10 @@
-package com.joey.loanservice.strategy;
+package com.joey.loanservice.strategy.TravelLoan;
 
-import com.joey.loanservice.dtos.CustomLoanResponse;
-import io.spring.guides.loanservice.loan.LoanType;
+import com.joey.loanservice.strategy.ILoanDefaultStrategy;
 
-public interface ILoanDefaultStrategy {
-    LoanType loanBasic = new LoanType();
-    LoanType loanIntermediate = new LoanType();
-    LoanType loanAdvanced = new LoanType();
+public interface ITravelLoanStrategy extends ILoanDefaultStrategy {
 
-    CustomLoanResponse processLoanOptions (Integer age);
-    Integer getIncomePerYearRole ();
-
+    @Override
     public default String getStatus() {
         double scale = Math.pow(10, 2);
 
@@ -31,12 +25,6 @@ public interface ILoanDefaultStrategy {
         sb.append("INSTALLMENT VALUE: : ").append(installmentIntermediateValue);
         sb.append("\n\n");
 
-        double totalAdvanced = (loanAdvanced.getValue() + ((loanAdvanced.getInterest()/100) * loanAdvanced.getValue()));
-        double installmentBasicAdvanced = Math.ceil((totalBasic/ loanAdvanced.getInstallments()) * scale) / scale;
-        sb.append("ADVANCED LOAN: \n");
-        sb.append("TOTAL PAYMENT: ").append(totalAdvanced);
-        sb.append("INSTALLMENT VALUE: : ").append(installmentBasicAdvanced);
-        sb.append("\n\n");
         return sb.toString();
     }
 }

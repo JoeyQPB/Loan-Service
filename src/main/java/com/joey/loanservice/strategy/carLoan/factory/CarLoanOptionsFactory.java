@@ -1,6 +1,5 @@
 package com.joey.loanservice.strategy.carLoan.factory;
 
-import com.joey.loanservice.model.UserModel;
 import com.joey.loanservice.strategy.carLoan.ICarLoanStrategy;
 import org.springframework.stereotype.Component;
 
@@ -24,17 +23,15 @@ public class CarLoanOptionsFactory {
             incomePerYearRole =  0;
         } else if (incomePerYear <= 200000) {
             incomePerYearRole =  1;
-        } else if (incomePerYear > 200000) {
-            incomePerYearRole =  2;
         } else {
-            throw new IllegalArgumentException("Invalid income value");
+            incomePerYearRole =  2;
         }
 
         ICarLoanStrategy strategy = strategies.get(incomePerYearRole);
 
         if (strategy == null) {
-            System.out.println("Not Options Loans for income: " + incomePerYear);
-            throw new Exception("Not Options Loans for income: " + incomePerYear);
+            System.out.println("Not Options Loans for car with income: " + incomePerYear);
+            throw new Exception("Not Options Loans car with income: " + incomePerYear);
         }
 
         return strategy;
