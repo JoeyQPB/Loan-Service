@@ -18,15 +18,15 @@ public class HouseLoan implements ILoanProcessStrategy {
     private LoanType loanAdvanced = null;
 
     private final Map<Double, LoanType> loanDataOptions = new HashMap<>() {{
-        put(1.0, LoanOptionFactory.build(150000, 1.8, 24));
-        put(1.1, LoanOptionFactory.build(200000, 2.0, 36));
-        put(1.2, LoanOptionFactory.build(250000, 2.5, 48));
-        put(2.0, LoanOptionFactory.build(250000, 1.8, 24));
-        put(2.1, LoanOptionFactory.build(300000, 2.0, 36));
-        put(2.2, LoanOptionFactory.build(350000, 2.5, 48));
-        put(3.0, LoanOptionFactory.build(350000, 1.8, 24));
-        put(3.1, LoanOptionFactory.build(400000, 2.0, 36));
-        put(3.2, LoanOptionFactory.build(450000, 2.5, 48));
+        put(1.0, LoanOptionFactory.build(24, 1.8, 150000));
+        put(1.1, LoanOptionFactory.build(36, 2.0, 200000));
+        put(1.2, LoanOptionFactory.build(48, 2.5, 250000));
+        put(2.0, LoanOptionFactory.build(24, 1.8, 250000));
+        put(2.1, LoanOptionFactory.build(36, 2.0, 300000));
+        put(2.2, LoanOptionFactory.build(48, 2.5, 350000));
+        put(3.0, LoanOptionFactory.build(24, 1.8, 350000));
+        put(3.1, LoanOptionFactory.build(36, 2.0, 400000));
+        put(3.2, LoanOptionFactory.build(48, 2.5, 450000));
     }};
 
     @Override

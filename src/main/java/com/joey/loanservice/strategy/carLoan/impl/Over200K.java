@@ -3,17 +3,19 @@ package com.joey.loanservice.strategy.carLoan.impl;
 import com.joey.loanservice.dtos.CustomLoanResponse;
 import com.joey.loanservice.strategy.carLoan.ICarLoanStrategy;
 import io.spring.guides.loanservice.loan.LoanType;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class Over200K implements ICarLoanStrategy {
 
     @Override
     public CustomLoanResponse processLoanOptions(Integer age) {
         CustomLoanResponse customLoanResponse = new CustomLoanResponse();
-        customLoanResponse.setStatus(this.getStatus());
         customLoanResponse.setLoanData(this.getLoanOptions(age));
+        customLoanResponse.setStatus(this.getStatus());
         return customLoanResponse;
     }
 

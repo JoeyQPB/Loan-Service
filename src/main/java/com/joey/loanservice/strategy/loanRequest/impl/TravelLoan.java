@@ -8,13 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class TravelLoan implements ILoanProcessStrategy {
 
-    // TODO
-    // DATA INCOMEPERYEAR AND AGE
-    // BUILD RESPONSE
-
     @Override
     public CustomLoanResponse processLoanRequest(Long incomePerYear, Integer age) throws Exception {
-        return null;
+        CustomLoanResponse customLoanResponse = new CustomLoanResponse();
+        customLoanResponse.setStatus("Service unavailable! We are working on it!");
+        customLoanResponse.setLoanData(null);
+        return customLoanResponse;
     }
 
     @Override

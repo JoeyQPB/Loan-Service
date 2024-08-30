@@ -30,8 +30,8 @@ public class CarLoanOptionsFactory {
         ICarLoanStrategy strategy = strategies.get(incomePerYearRole);
 
         if (strategy == null) {
-            System.out.println("Not Options Loans for car with income: " + incomePerYear);
-            throw new Exception("Not Options Loans car with income: " + incomePerYear);
+            System.out.println("No Options Loans for car with income: " + incomePerYear);
+            throw new Exception("No Options Loans car with income: " + incomePerYear);
         }
 
         return strategy;

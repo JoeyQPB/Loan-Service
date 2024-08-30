@@ -4,15 +4,13 @@ import com.joey.loanservice.dtos.CustomLoanResponse;
 import com.joey.loanservice.model.UserModel;
 import com.joey.loanservice.strategy.carLoan.ICarLoanStrategy;
 import io.spring.guides.loanservice.loan.LoanType;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class Until200K implements ICarLoanStrategy {
-
-    private final LoanType loanBasic = new LoanType();
-    private final LoanType loanIntermediate = new LoanType();
-    private final LoanType loanAdvanced = new LoanType();
 
     @Override
     public CustomLoanResponse processLoanOptions(Integer age) {
