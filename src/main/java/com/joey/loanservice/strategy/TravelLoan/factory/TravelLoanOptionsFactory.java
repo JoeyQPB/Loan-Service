@@ -2,11 +2,13 @@ package com.joey.loanservice.strategy.TravelLoan.factory;
 
 import com.joey.loanservice.strategy.TravelLoan.ITravelLoanStrategy;
 import com.joey.loanservice.strategy.carLoan.ICarLoanStrategy;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+@Component
 public class TravelLoanOptionsFactory {
 
     private final Map<Integer, ITravelLoanStrategy> strategies = new HashMap<>();

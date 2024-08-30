@@ -3,10 +3,12 @@ package com.joey.loanservice.strategy.TravelLoan.impl;
 import com.joey.loanservice.dtos.CustomLoanResponse;
 import com.joey.loanservice.strategy.TravelLoan.ITravelLoanStrategy;
 import io.spring.guides.loanservice.loan.LoanType;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class Over90K implements ITravelLoanStrategy {
 
     @Override

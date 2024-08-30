@@ -3,10 +3,12 @@ package com.joey.loanservice.strategy.EmergencyLoan.impl.impl;
 import com.joey.loanservice.strategy.EmergencyLoan.impl.IEmergencyLoanAgeStrategy;
 import com.joey.loanservice.strategy.loanRequest.impl.factory.LoanOptionFactory;
 import io.spring.guides.loanservice.loan.LoanType;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class AgeRange21to25 implements IEmergencyLoanAgeStrategy {
 
     @Override
