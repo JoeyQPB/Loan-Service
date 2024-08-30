@@ -30,8 +30,8 @@ public class EmergencyLoanOptionsFactory {
         IEmergencyLoanIncomeStrategy strategy = strategies.get(incomePerYearRole);
 
         if (strategy == null) {
-            System.out.println("Not Options Loans for Emergency with income: " + incomePerYear);
-            throw new Exception("Not Options Loans Emergency with income: " + incomePerYear);
+            System.out.println("No Options Loans for Emergency with income: " + incomePerYear);
+            throw new Exception("No Options Loans Emergency with income: " + incomePerYear);
         }
 
         return strategy;

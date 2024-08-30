@@ -11,11 +11,15 @@ import java.util.List;
 @Component
 public class Until36K implements IEmergencyLoanIncomeStrategy {
 
-    private EmergencyLoanAgeOptionsFactory emergencyLoanAgeOptionsFactory;
+    private final EmergencyLoanAgeOptionsFactory emergencyLoanAgeOptionsFactory;
+
+    public Until36K(EmergencyLoanAgeOptionsFactory emergencyLoanAgeOptionsFactory) {
+        this.emergencyLoanAgeOptionsFactory = emergencyLoanAgeOptionsFactory;
+    }
 
     @Override
     public CustomLoanResponse processLoanOptions(Integer age) {
-        List<LoanType> loanTypes = emergencyLoanAgeOptionsFactory.getStrategy(age).processLoanOptions();
+        List<LoanType> loanTypes = emergencyLoanAgeOptionsFactory.getStrategy(age).processLoanOptions(4);
         CustomLoanResponse customLoanResponse = new CustomLoanResponse();
         customLoanResponse.setLoanData(loanTypes);
         this.setLoans(loanTypes);

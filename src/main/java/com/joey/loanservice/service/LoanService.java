@@ -39,10 +39,7 @@ public class LoanService {
 
         Long incomePerYear = user.getIncomePerYear();
         int actualAge = Period.between(user.getDateOfBirth(), LocalDate.now()).getYears();
-        System.out.println("A idade atual é: " + actualAge);
-
         defaultRefusalValidationsList.forEach(defaultRef -> defaultRef.execute(incomePerYear, actualAge));
-        System.out.println("TODAS AS VALIDAÇÕES FORAM FEITAS!");
 
         loanResponse = this.loanProcessFactory.getStrategy(destination).
                 processLoanRequest(user.getIncomePerYear(), actualAge);

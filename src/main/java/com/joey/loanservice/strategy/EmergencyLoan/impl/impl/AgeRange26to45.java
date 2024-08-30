@@ -12,11 +12,11 @@ import java.util.List;
 public class AgeRange26to45 implements IEmergencyLoanAgeStrategy {
 
     @Override
-    public List<LoanType> processLoanOptions() {
+    public List<LoanType> processLoanOptions(int incomeFactor) {
         List<LoanType> loanTypes = new ArrayList<>();
-        loanTypes.add(LoanOptionFactory.build(12, 2.5, 40000));
-        loanTypes.add(LoanOptionFactory.build(18, 3.5, 60000));
-        loanTypes.add(LoanOptionFactory.build(24, 4.0, 80000));
+        loanTypes.add(LoanOptionFactory.build(12, 2.5, 40000 * incomeFactor));
+        loanTypes.add(LoanOptionFactory.build(18, 3.5, 60000 * incomeFactor));
+        loanTypes.add(LoanOptionFactory.build(24, 4.0, 80000 * incomeFactor));
         return loanTypes;
     }
 

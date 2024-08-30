@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IEmergencyLoanAgeStrategy {
 
-    List<LoanType> processLoanOptions ();
+    List<LoanType> processLoanOptions (int incomeFactor);
     Integer getAgeRole ();
 }
